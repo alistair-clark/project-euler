@@ -14,6 +14,8 @@ def LargestPrimeFactor(num):
     """
     factors = []
     d = 2 # Setting at 2 since this is the first non-trivial factor
+    if num == 1:
+        return 1
     while num > 1:
         while num % d == 0:
             factors.append(d)
@@ -21,6 +23,3 @@ def LargestPrimeFactor(num):
         d += 1
 
     return max(factors)
-
-
-LargestPrimeFactor(600851475143)
