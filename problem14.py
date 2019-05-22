@@ -1,6 +1,6 @@
 '''
 Project Euler
-Problem #13: Longest Collatz sequence
+Problem #14: Longest Collatz sequence
 
 The following iterative sequence is defined for the set of positive integers:
 
