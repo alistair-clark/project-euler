@@ -62,12 +62,25 @@ class Digraph(object):
                 result = result + src.getName() + '->' + dest.getName() + '\n'
         return result[:-1] # omit final newline
 
+def printPath(path):
+    """Assumes path is a list of nodes"""
+    result = ''
+    for in in range(len(path)):
+        result = result + str(path[i])
+        if i != len(path) - 1:
+            result = result + '->'
+    return result
+
+def BFS(graph, start, end, path, )
+
+
 def makeGrid(graph, length, width):
     graph.nodes = []
     graph.edges = []
     for i in range(length+1):
         for j in range(width+1):
             graph.nodes.append(Nodes(str(i) + "," + str(j)))
+grid = Digraph()
 makeGrid(grid, 2, 2)
 
 str(grid)
