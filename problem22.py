@@ -17,19 +17,10 @@ import string
 names_df = pd.read_csv('p022_names.txt', header=None).transpose()
 
 # add column name
+names_df.dropna(axis=0, inplace=True)
 names_df.columns = ['Name']
-names_df['Score'] = ''
-names_df['Rank'] = ''
-names_df['Total'] = ''
-names_df.set_index('Name',inplace=True)
-
-# sort alphabetically and drop NaN row
-names_df = names_df.sort_values(by=['Name'])
-names_df.head(5)
-names_df.tail(5)
-names_df.drop(names_df.tail(1).index,inplace=True)
-names_df.drop(axis=0,index='NAN',inplace=True) # Drop NaN name
-names_df.info()
+names_df = names_df.reindex(columns=['Name', 'Score', 'Rank','Total'])
+names_df.set_index('Name', inplace=True)
 
 # create alphabet scoring dict
 alphabet = {}
@@ -44,7 +35,8 @@ for i, row in names_df.iterrows():
         sum += alphabet[letter]
     names_df.at[i, 'Score'] = sum
 
-# add 'Rank' to dataframe
+# sort alphabetically and fill in 'Rank' column
+names_df = names_df.sort_values(by=['Name'])
 rank = 1
 for i, row in names_df.iterrows():
     names_df.at[i, 'Rank'] = rank
@@ -55,5 +47,10 @@ for i, row in names_df.iterrows():
     names_df.at[i, 'Total'] = names_df.at[i, 'Score'] * names_df.at[i, 'Rank']
 
 # sum the total for all names (off by a bit, not sure why)
+total = 0
+for i, row in names_df.iterrows():
+    total += names_df.at[i, 'Total']
+total
+
 totalscore = names_df['Total'].sum()
 print(totalscore)
