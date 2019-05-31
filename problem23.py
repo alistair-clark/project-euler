@@ -28,12 +28,11 @@ def abundantNums(limit):
             result.append(i)
     return result
 
-abundantNumList = abundantNums(28123)
-
 def sumInList(numList, num):
     """Return True if 2 numbers from `numList` add up to num, False otherwise."""
     numSet = set(numList)
     return any(num-i in numSet for i in numSet)
+
 
 result = 0
 for i in range(1, 28124):

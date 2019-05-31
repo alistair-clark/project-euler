@@ -47,10 +47,5 @@ for i, row in names_df.iterrows():
     names_df.at[i, 'Total'] = names_df.at[i, 'Score'] * names_df.at[i, 'Rank']
 
 # sum the total for all names (off by a bit, not sure why)
-total = 0
-for i, row in names_df.iterrows():
-    total += names_df.at[i, 'Total']
-total
-
 totalscore = names_df['Total'].sum()
 print(totalscore)
